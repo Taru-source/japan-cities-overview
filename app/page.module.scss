@@ -1,25 +1,120 @@
 .main {
     display: grid;
-    grid-template-columns: 1fr;
-    place-items: center;
-}
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "Left Content Content Right"
+        "Left Content Content Right"
+        "Left Content Content Right";
 
-.prefContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    place-items: center;
-    padding: 0;
-    width: 50vw;
-}
+    .right {
+        grid-area: Right;
+    }
 
-.prefLink {
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: bold;
+    .left {
+        grid-area: Left;
+    }
 
-    &:hover {
-        color: skyblue;
-        text-decoration: underline;
+
+    .prefContainer {
+        grid-area: Content;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        place-items: center;
+        padding: 0;
+        width: 50vw;
+
+        @media(max-width: 400px) {
+            grid-template-columns: 1fr;
+            width: 80vw;
+        }
+
+
+        .prefCard {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 100%;
+
+
+            .link {
+                text-decoration: none;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            .prefCardHeader img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .prefCardBody {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 20px;
+                min-height: 50px;
+            }
+
+            .prefCardTag {
+                background: #cccccc;
+                border-radius: 50px;
+                font-size: 14px;
+                margin: 0;
+                color: #fff;
+                padding: 2px 10px;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+
+            .prefCardTag.Hokkaido {
+                background-color: deepskyblue;
+            }
+
+            .prefCardTag.Tohoku {
+                background-color: paleturquoise;
+            }
+
+            .prefCardTag.Kanto {
+                background-color: cadetblue
+            }
+
+            .prefCardTag.Chubu {
+                background-color: lightgreen;
+            }
+
+            .prefCardTag.Kinki {
+                background-color: khaki;
+            }
+
+            .prefCardTag.Chugoku {
+                background-color: plum;
+            }
+
+            .prefCardTag.Shikoku {
+                background-color: rosybrown;
+            }
+
+            .prefCardTag.Kyushu {
+                background-color: lightpink;
+            }
+
+            .prefCardTag.Okinawa {
+                background-color: coral;
+            }
+
+            .prefLabel {
+                &:hover {
+                    color: skyblue;
+                    text-decoration: underline;
+                }
+            }
+        }
     }
 }

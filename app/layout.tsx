@@ -13,7 +13,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={styles.className}>{children}</body>
+      <body className={styles.body}>
+        <header className={styles.header}>Japan Cities Overview</header>
+        {children}
+        <footer className={styles.footer}>
+          © 2024 <a href="https://github.com/Taru-source">Taru-source</a>
+        </footer>
+      </body>
     </html>
   );
 }

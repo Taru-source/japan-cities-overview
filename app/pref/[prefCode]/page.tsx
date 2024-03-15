@@ -20,9 +20,7 @@ export default async function Page({
           <li key={city.id}>
             {city.cityName}{" "}
             {`一人暮らしの家賃相場：${
-              city.rentPerSqm != 0
-                ? rentForSingle(city.rentPerSqm).toLocaleString()
-                : " - "
+              city.rentPerSqm != 0 ? rentForSingle(city.rentPerSqm) : " - "
             }円`}
           </li>
         ))}
