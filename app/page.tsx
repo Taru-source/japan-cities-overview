@@ -11,19 +11,35 @@ export default async function Home() {
   const randomCity = cities[randomInt(0, cities.length - 1)];
   return (
     <main className={styles.main}>
-      <div className={styles.right}></div>
-      <div className={styles.left}></div>
+      <div className={styles.right}>
+        ここに何かしらの項目別ランキング=市区町村にフィーチャーするもの
+      </div>
+      <div className={styles.left}>ここにサイト構造を表すリンク集でも</div>
       <ul className={styles.prefContainer}>
         <div>
           <div>
-            ランダム都市{prefName(randomCity.prefCode)}
+            ランダム都市：{prefName(randomCity.prefCode)}
             {randomCity.cityName}
           </div>
           <div>
-            一人暮らしの家賃相場：
-            {rentForSingle(randomCity.rentPerSqm)}円
+            {`一人暮らしの家賃相場：${
+              randomCity.rentPerSqm != 0
+                ? rentForSingle(randomCity.rentPerSqm)
+                : " - "
+            }円`}
           </div>
-          <div>ここにグーグルマップの埋め込みしたい</div>
+          <div>
+            グーグルマップリンク：
+            <a
+              href={`https://maps.google.com/maps?q=${
+                prefName(randomCity.prefCode) + randomCity.cityName
+              }`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {prefName(randomCity.prefCode) + randomCity.cityName}
+            </a>
+          </div>
         </div>
         {prefCodes.map((prefCode) => (
           <div className={styles.prefCard} key={prefCode}>
