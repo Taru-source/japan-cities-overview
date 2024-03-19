@@ -49,18 +49,12 @@
                 font-weight: bold;
             }
 
-            .prefCardHeader img {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-            }
-
             .prefCardBody {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
-                padding: 20px;
+                padding: 1rem;
                 min-height: 50px;
             }
 

@@ -1,7 +1,7 @@
-import { prefCodes, prefName } from "@/libs/pref";
+import { avgPrefRent, prefCodes, prefName } from "@/libs/pref";
 import styles from "./page.module.scss";
 import Link from "next/link";
-import { fetchCities } from "@/libs/city";
+import { fetchCities } from "@/libs/pref";
 import { randomInt } from "crypto";
 import { Ragion } from "@/libs/ragion";
 import { rentForSingle } from "@/libs/rent";
@@ -16,7 +16,7 @@ export default async function Home() {
         ここに何かしらの項目別ランキング=市区町村にフィーチャーするもの
       </div>
       <div className={styles.left}>ここにサイト構造を表すリンク集でも</div>
-      <ul className={styles.prefContainer}>
+      <div className={styles.prefContainer}>
         <div>
           <div>
             ランダム都市：{prefName(randomCity.prefCode)}
@@ -46,10 +46,7 @@ export default async function Home() {
           <div className={styles.prefCard} key={prefCode}>
             <Link href={`pref/${prefCode}`} className={styles.link}>
               <div className={styles.prefCardHeader}>
-                <Image
-                  src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg"
-                  alt="rover"
-                />
+                <Image src="/japan.png" alt="sample" width={300} height={200} />
               </div>
               <div className={styles.prefCardBody}>
                 <span
@@ -60,11 +57,18 @@ export default async function Home() {
                   {Ragion(prefCode).name}
                 </span>
                 <span className={styles.prefLabel}>{prefName(prefCode)}</span>
+                <span>
+                  {`平均家賃相場：${rentForSingle(
+                    avgPrefRent(
+                      cities.filter((city) => city.prefCode === prefCode)
+                    )
+                  )}円`}
+                </span>
               </div>
             </Link>
           </div>
         ))}
-      </ul>
+      </div>
     </main>
   );
 }

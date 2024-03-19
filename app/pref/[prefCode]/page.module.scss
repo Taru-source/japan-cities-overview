@@ -1,5 +1,47 @@
-.citiesContainer {
+.main {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1rem;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "Left Content Content Right"
+        "Left Content Content Right"
+        "Left Content Content Right";
+
+    .right {
+        grid-area: Right;
+    }
+
+    .left {
+        grid-area: Left;
+    }
+
+    .citiesContainer {
+        grid-area: Content;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        place-items: center;
+        padding: 1rem;
+
+        .cityCard {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .cityCardBody {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 1rem;
+                min-height: 50px;
+            }
+        }
+    }
 }

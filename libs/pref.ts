@@ -1,8 +1,6 @@
-export const prefName = (prefCode: number): string => {
-  return PrefCodeToName[prefCode] || "N/A";
-};
+import { city } from "./city";
 
-export const prefCodes = Array.from({ length: 47 }, (_, i) => i + 1);
+import { get, Endpoint } from "./client";
 
 interface PrefCodeToString {
   [key: number]: string;
@@ -56,4 +54,27 @@ const PrefCodeToName: PrefCodeToString = {
   45: "宮崎県",
   46: "鹿児島県",
   47: "沖縄県",
+};
+
+export const prefName = (prefCode: number): string => {
+  return PrefCodeToName[prefCode] || "N/A";
+};
+
+export const prefCodes = Array.from({ length: 47 }, (_, i) => i + 1);
+
+export async function fetchCities(prefCode?: number): Promise<city[]> {
+  if (prefCode) {
+    return get(Endpoint.cities, { prefCode: prefCode }).then(
+      (res) => res.contents
+    );
+  }
+  return get(Endpoint.cities).then((res) => res.contents);
+}
+
+export const avgPrefRent = (citiesUnderPref: city[]): number => {
+  const citiesHasRent = citiesUnderPref.filter((city) => city.rentPerSqm != 0);
+  return Math.round(
+    citiesHasRent.reduce((acc, cur) => acc + cur.rentPerSqm, 0) /
+      citiesHasRent.length
+  );
 };
