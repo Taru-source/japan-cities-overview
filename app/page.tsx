@@ -5,6 +5,7 @@ import { fetchCities } from "@/libs/city";
 import { randomInt } from "crypto";
 import { Ragion } from "@/libs/ragion";
 import { rentForSingle } from "@/libs/rent";
+import Image from "next/image";
 
 export default async function Home() {
   const cities = await fetchCities();
@@ -45,7 +46,7 @@ export default async function Home() {
           <div className={styles.prefCard} key={prefCode}>
             <Link href={`pref/${prefCode}`} className={styles.link}>
               <div className={styles.prefCardHeader}>
-                <img
+                <Image
                   src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg"
                   alt="rover"
                 />
