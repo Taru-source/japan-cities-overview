@@ -12,10 +12,6 @@ export default async function Home() {
   const randomCity = cities[randomInt(0, cities.length - 1)];
   return (
     <main className={styles.main}>
-      <div className={styles.right}>
-        ここに何かしらの項目別ランキング=市区町村にフィーチャーするもの
-      </div>
-      <div className={styles.left}>ここにサイト構造を表すリンク集でも</div>
       <div className={styles.prefContainer}>
         <div>
           <div>

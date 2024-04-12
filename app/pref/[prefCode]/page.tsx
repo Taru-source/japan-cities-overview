@@ -15,8 +15,6 @@ export default async function Page({
   // ここも都道府県一覧と同じようにカード式のコンポーネントにしたい
   return (
     <div className={styles.main}>
-      <div className={styles.right}>なんかいれる</div>
-      <div className={styles.left}>なんかいれるよ</div>
       <div className={styles.citiesContainer}>
         <div>{prefName(params.prefCode)}以下の都市一覧</div>
         <div>※一人暮らし = 1kと仮定</div>
