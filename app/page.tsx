@@ -53,7 +53,7 @@ export default async function Home() {
                   {Ragion(prefCode).name}
                 </span>
                 <span className={styles.prefLabel}>{prefName(prefCode)}</span>
-                <span>
+                <span className={styles.prefRent}>
                   {`平均家賃相場：${rentForSingle(
                     avgPrefRent(
                       cities.filter((city) => city.prefCode === prefCode)
