@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "e2e": "playwright test ./e2e"
+    "e2e": "playwright test ./__e2e__"
   },
   "dependencies": {
     "microcms-js-sdk": "^2.7.0",
