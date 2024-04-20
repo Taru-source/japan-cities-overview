@@ -1,10 +1,5 @@
 import { createClient } from "microcms-js-sdk";
 
-const client = createClient({
-  serviceDomain: process.env.MICRO_CMS_DOMAIN as string,
-  apiKey: process.env.MICRO_CMS_API_KEY as string,
-});
-
 const defaultLimit = 2000;
 
 export enum Endpoint {
@@ -16,6 +11,11 @@ export function get(
   queries?: { [key: string]: string | number },
   limit?: number
 ) {
+  const client = createClient({
+    serviceDomain: process.env.MICRO_CMS_DOMAIN as string,
+    apiKey: process.env.MICRO_CMS_API_KEY as string,
+  });
+
   // 「filters: 'key[equals]value'」の形でクエリを作成
   let filters = "";
   if (queries) {
