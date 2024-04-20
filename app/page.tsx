@@ -14,7 +14,7 @@ export default async function Home() {
     <main className={styles.main}>
       <div className={styles.prefContainer}>
         <div>
-          <div>
+          <div className="random-city">
             ランダム都市：{prefName(randomCity.prefCode)}
             {randomCity.cityName}
           </div>
