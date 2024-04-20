@@ -9,6 +9,11 @@ describe("prefName", () => {
     expect(prefName(prefCode)).toBe("北海道");
   });
 
+  it("should return prefName by prefCode", () => {
+    const prefCode = 13;
+    expect(prefName(prefCode)).toBe("東京都");
+  });
+
   it("should return N/A if prefCode is not found", () => {
     const prefCode = 100;
     expect(prefName(prefCode)).toBe("N/A");
