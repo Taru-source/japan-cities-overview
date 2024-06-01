@@ -39,7 +39,11 @@ export default async function Home() {
           </div>
         </div>
         {prefCodes.map((prefCode) => (
-          <div className={styles.prefCard} key={prefCode}>
+          <div
+            className={styles.prefCard}
+            key={prefCode}
+            data-testid="pref-card"
+          >
             <Link href={`pref/${prefCode}`} className={styles.link}>
               <div className={styles.prefCardHeader}>
                 <Image src="/japan.png" alt="sample" width={300} height={200} />
