@@ -13,7 +13,6 @@ export default async function Page({
 }) {
   const cities = await fetchCities(params.prefCode);
 
-  // ここも都道府県一覧と同じようにカード式のコンポーネントにしたい
   return (
     <div className={styles.main}>
       <div className={styles.citiesContainer}>
