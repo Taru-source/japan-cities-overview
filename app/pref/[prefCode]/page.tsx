@@ -29,7 +29,7 @@ export default async function Page({
             </div>
             <div className={styles.cityCardBody}>
               <div>{city.cityName}</div>
-              <div>
+              <div data-testid="city-rent">
                 {`一人暮らしの家賃相場：${
                   city.rentPerSqm != 0 ? rentForSingle(city.rentPerSqm) : " - "
                 }円`}

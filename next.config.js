@@ -4,4 +4,7 @@ module.exports = {
       fullUrl: true,
     },
   },
+  experimental: {
+    forceSwcTransforms: true,
+  },
 }
