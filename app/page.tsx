@@ -3,7 +3,7 @@ import styles from "./page.module.scss";
 import Link from "next/link";
 import { fetchCities } from "@/libs/pref";
 import { randomInt } from "crypto";
-import { Ragion } from "@/libs/ragion";
+import { ragion } from "@/libs/ragion";
 import { rentForSingle } from "@/libs/rent";
 import Image from "next/image";
 import GoogleMapLink from "@/components/googleMapLink";
@@ -48,10 +48,10 @@ export default async function Home() {
               <div className={styles.prefCardBody}>
                 <span
                   className={`${styles.prefCardTag} ${
-                    styles[Ragion(prefCode).roma]
+                    styles[ragion(prefCode).roma]
                   }`}
                 >
-                  {Ragion(prefCode).name}
+                  {ragion(prefCode).name}
                 </span>
                 <span className={styles.prefLabel}>{prefName(prefCode)}</span>
                 <span className={styles.prefRent}>

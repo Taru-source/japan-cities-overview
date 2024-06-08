@@ -28,7 +28,7 @@ enum RagionCode {
   Okinawa = 9,
 }
 
-export const Ragion = (prefectureNumber: number): Ragion => {
+export const ragion = (prefectureNumber: number): Ragion => {
   switch (true) {
     case prefectureNumber === 1:
       return {

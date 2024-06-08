@@ -1,7 +1,5 @@
 import { city } from "@/libs/city";
-import { Endpoint } from "@/libs/client";
-import { avgPrefRent, fetchCities, prefName } from "@/libs/pref";
-import { createClient } from "microcms-js-sdk";
+import { avgPrefRent, prefName } from "@/libs/pref";
 
 describe("prefName", () => {
   it("should return prefName by prefCode", () => {
