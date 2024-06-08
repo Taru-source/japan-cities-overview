@@ -6,6 +6,7 @@ import { randomInt } from "crypto";
 import { Ragion } from "@/libs/ragion";
 import { rentForSingle } from "@/libs/rent";
 import Image from "next/image";
+import GoogleMapLink from "@/components/googleMapLink";
 
 export default async function Home() {
   const cities = await fetchCities();
@@ -26,16 +27,12 @@ export default async function Home() {
             }円`}
           </div>
           <div>
-            グーグルマップリンク：
-            <a
-              href={`https://maps.google.com/maps?q=${
-                prefName(randomCity.prefCode) + randomCity.cityName
-              }`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {prefName(randomCity.prefCode) + randomCity.cityName}
-            </a>
+            <GoogleMapLink
+              params={{
+                prefName: prefName(randomCity.prefCode),
+                cityName: randomCity.cityName,
+              }}
+            />
           </div>
         </div>
         {prefCodes.map((prefCode) => (
