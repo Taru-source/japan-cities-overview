@@ -1,26 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+npm i #if you needed
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
 ## Contributing
 
-Before making PR, make sure you passed tests.
+Before making a PR, make sure all tests pass.
 
 We have two test suites.
 
-```
+```bash
 npm run test
 npm run test:e2e
 ```
+
+Since we follow TDD principles, as long as these tests pass, the changes should be ready to merge.
+
+## How we deploy
+
+This app is hosted on Vercel, so any push or pull request to the branches will trigger an automatic deployment.
+
+For more details, see the Vercel [docs.](https://vercel.com/docs/deployments/git/vercel-for-github#deploying-a-github-repository)
