@@ -22,7 +22,7 @@ npm run test:e2e
 
 Since we follow TDD principles, as long as these tests pass, the changes should be ready to merge.
 
-## How we deploy
+## Deployment
 
 This app is hosted on Vercel, so any push or pull request to the branches will trigger an automatic deployment.
 
