@@ -1,4 +1,4 @@
-import { city } from "./city";
+import { City } from "./city";
 
 import { get, Endpoint } from "./client";
 
@@ -62,7 +62,7 @@ export const prefName = (prefCode: number): string => {
 
 export const prefCodes = Array.from({ length: 47 }, (_, i) => i + 1);
 
-export async function fetchCities(prefCode?: number): Promise<city[]> {
+export async function fetchCities(prefCode?: number): Promise<City[]> {
   if (prefCode) {
     return get(Endpoint.cities, { prefCode: prefCode }).then(
       (res) => res.contents
@@ -71,7 +71,7 @@ export async function fetchCities(prefCode?: number): Promise<city[]> {
   return get(Endpoint.cities).then((res) => res.contents);
 }
 
-export const avgPrefRent = (citiesUnderPref: city[]): number => {
+export const avgPrefRent = (citiesUnderPref: City[]): number => {
   const citiesHasRent = citiesUnderPref.filter((city) => city.rentPerSqm != 0);
   return Math.round(
     citiesHasRent.reduce((acc, cur) => acc + cur.rentPerSqm, 0) /
