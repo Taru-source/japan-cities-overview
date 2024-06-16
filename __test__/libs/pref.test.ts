@@ -1,4 +1,4 @@
-import { city } from "@/libs/city";
+import { City } from "@/libs/city";
 import { avgPrefRent, prefName } from "@/libs/pref";
 
 describe("prefName", () => {
@@ -29,7 +29,7 @@ describe("avgPrefRent", () => {
       { rentPerSqm: 1000 },
       { rentPerSqm: 2000 },
       { rentPerSqm: 3000 },
-    ] as city[];
+    ] as City[];
     expect(avgPrefRent(cities)).toBe(2000);
   });
 });
