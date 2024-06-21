@@ -9,8 +9,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2
-
       - name: Curl the URL
         run: curl -I https://japan-cities-overview.vercel.app/
