@@ -7,6 +7,7 @@ import Image from "next/image";
 import GoogleMapLink from "@/components/googleMapLink";
 
 export const dynamic = "force-static";
+export const revalidate = 86400;
 
 export default async function Page({
   params,
