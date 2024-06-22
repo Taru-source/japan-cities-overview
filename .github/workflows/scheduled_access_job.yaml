@@ -2,7 +2,7 @@ name: Scheduled URL Access
 
 on:
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: '*/30 * * * *'
 
 jobs:
   curl-job:
