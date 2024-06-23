@@ -25,6 +25,8 @@ export default function RootLayout({
         {children}
         <footer className={styles.footer}>
           © 2024 <a href="https://github.com/Taru-source">Taru-source</a>
+          <br />
+          <Link href="/appendix">Appendix</Link>
         </footer>
       </body>
     </html>
