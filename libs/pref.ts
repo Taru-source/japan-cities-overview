@@ -1,5 +1,4 @@
 import { City } from "./city";
-
 import { get, Endpoint } from "./client";
 
 interface PrefCodeToString {
