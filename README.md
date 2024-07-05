@@ -1,3 +1,6 @@
+## What is this
+市区町村ラブのTaru-sourceがインターネッツで公開しているサービスです。
+
 ## Getting Started
 
 First, run the development server:
