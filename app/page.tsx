@@ -42,8 +42,17 @@ export default async function Home() {
             data-testid="pref-card"
           >
             <Link href={`pref/${prefCode}`} className={styles.link}>
-              <div className={styles.prefCardHeader}>
-                <Image src="/japan.png" alt="sample" width={300} height={200} />
+              <div
+                style={{ position: "relative", width: "100%", height: "20vh" }}
+              >
+                <Image
+                  src={`/prefImages/${prefCode}.jpg`}
+                  alt="sample"
+                  fill
+                  style={{
+                    objectFit: "cover",
+                  }}
+                />
               </div>
               <div className={styles.prefCardBody}>
                 <span
