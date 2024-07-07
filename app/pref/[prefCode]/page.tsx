@@ -27,9 +27,6 @@ export default async function Page({
             key={city.id}
             data-tetstid="city-card"
           >
-            <div>
-              <Image src="/japan.png" alt="sample" width={300} height={200} />
-            </div>
             <div className={styles.cityCardBody}>
               <div>{city.cityName}</div>
               <div data-testid="city-rent">
