@@ -1,4 +1,5 @@
 import { createClient } from "microcms-js-sdk";
+import { z } from "zod";
 
 const defaultLimit = 2000;
 
@@ -6,14 +7,21 @@ export enum Endpoint {
   cities = "cities",
 }
 
+const envSchema = z.object({
+  MICRO_CMS_DOMAIN: z.string(),
+  MICRO_CMS_API_KEY: z.string(),
+});
+
+const validatedEnv = envSchema.parse(process.env);
+
 export function get(
   endpoint: Endpoint,
   queries?: { [key: string]: string | number },
   limit?: number
 ) {
   const client = createClient({
-    serviceDomain: process.env.MICRO_CMS_DOMAIN as string,
-    apiKey: process.env.MICRO_CMS_API_KEY as string,
+    serviceDomain: validatedEnv.MICRO_CMS_DOMAIN,
+    apiKey: validatedEnv.MICRO_CMS_API_KEY,
   });
 
   // 「filters: 'key[equals]value'」の形でクエリを作成

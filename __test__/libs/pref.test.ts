@@ -25,11 +25,11 @@ describe("prefName", () => {
 
 describe("avgPrefRent", () => {
   it("渡されたcitiesのrentの平均値を返す", () => {
-    const cities = [
-      { rentPerSqm: 1000 },
-      { rentPerSqm: 2000 },
-      { rentPerSqm: 3000 },
-    ] as City[];
+    const cities: City[] = [
+      { rentPerSqm: 1000, cityName: "city1", id: "1", prefCode: 1 },
+      { rentPerSqm: 3000, cityName: "city2", id: "2", prefCode: 1 },
+      { rentPerSqm: 2000, cityName: "city3", id: "3", prefCode: 1 },
+    ];
     expect(avgPrefRent(cities)).toBe(2000);
   });
 });
