@@ -1,5 +1,5 @@
 import { City } from "./city";
-import { get, Endpoint } from "./client";
+import { getCities, Endpoint } from "./client";
 
 interface PrefCodeToString {
   [key: number]: string;
@@ -63,11 +63,11 @@ export const prefCodes = Array.from({ length: 47 }, (_, i) => i + 1);
 
 export async function fetchCities(prefCode?: number): Promise<City[]> {
   if (prefCode) {
-    return get(Endpoint.cities, { prefCode: prefCode }).then(
+    return getCities(Endpoint.cities, { prefCode: prefCode }).then(
       (res) => res.contents
     );
   }
-  return get(Endpoint.cities).then((res) => res.contents);
+  return getCities(Endpoint.cities).then((res) => res.contents);
 }
 
 export const avgPrefRent = (citiesUnderPref: City[]): number => {

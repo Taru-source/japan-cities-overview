@@ -1,4 +1,4 @@
-import { Endpoint, get } from "@/libs/client";
+import { Endpoint, getCities } from "@/libs/client";
 import { createClient } from "microcms-js-sdk";
 
 jest.mock("microcms-js-sdk", () => ({
@@ -15,7 +15,7 @@ describe("get function", () => {
     });
 
     const mockQueries = { city: "Tokyo" };
-    await get(Endpoint.cities, mockQueries, 100);
+    await getCities(Endpoint.cities, mockQueries, 100);
 
     expect(mockGet).toHaveBeenCalledWith({
       endpoint: Endpoint.cities,
@@ -30,7 +30,7 @@ describe("get function", () => {
     });
 
     const mockQueries = { city: "Tokyo" };
-    await get(Endpoint.cities, mockQueries);
+    await getCities(Endpoint.cities, mockQueries);
 
     expect(mockGet).toHaveBeenCalledWith({
       endpoint: Endpoint.cities,

@@ -3,8 +3,8 @@ import { prefName } from "@/libs/pref";
 import { fetchCities } from "@/libs/pref";
 import { rentForSingle } from "@/libs/rent";
 import styles from "./page.module.scss";
-import Image from "next/image";
 import GoogleMapLink from "@/components/googleMapLink";
+import Link from "next/link";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -28,7 +28,9 @@ export default async function Page({
             data-tetstid="city-card"
           >
             <div className={styles.cityCardBody}>
-              <div>{city.cityName}</div>
+              <Link href={`/city/${city.id}`}>
+                <div>{city.cityName}</div>
+              </Link>
               <div data-testid="city-rent">
                 {`一人暮らしの家賃相場：${
                   city.rentPerSqm != 0 ? rentForSingle(city.rentPerSqm) : " - "

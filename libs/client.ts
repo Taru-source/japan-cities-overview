@@ -14,16 +14,23 @@ const envSchema = z.object({
 
 const validatedEnv = envSchema.parse(process.env);
 
-export function get(
+const client = createClient({
+  serviceDomain: validatedEnv.MICRO_CMS_DOMAIN,
+  apiKey: validatedEnv.MICRO_CMS_API_KEY,
+});
+
+export function getCity(endpoint: Endpoint, cityCode: number) {
+  return client.get({
+    endpoint: endpoint,
+    contentId: cityCode.toString(),
+  });
+}
+
+export function getCities(
   endpoint: Endpoint,
   queries?: { [key: string]: string | number },
   limit?: number
 ) {
-  const client = createClient({
-    serviceDomain: validatedEnv.MICRO_CMS_DOMAIN,
-    apiKey: validatedEnv.MICRO_CMS_API_KEY,
-  });
-
   // 「filters: 'key[equals]value'」の形でクエリを作成
   let filters = "";
   if (queries) {
