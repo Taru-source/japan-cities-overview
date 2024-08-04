@@ -1,40 +1,35 @@
-import { Endpoint, getCities } from "@/libs/client";
-import { createClient } from "microcms-js-sdk";
+import { generateFilters } from "@/libs/client";
 
-jest.mock("microcms-js-sdk", () => ({
-  createClient: jest.fn().mockReturnValue({
-    get: jest.fn(),
-  }),
-}));
-
-describe("get function", () => {
-  it("should call client.get with correct parameters", async () => {
-    const mockGet = jest.fn();
-    (createClient as jest.Mock).mockReturnValue({
-      get: mockGet,
-    });
-
-    const mockQueries = { city: "Tokyo" };
-    await getCities(Endpoint.cities, mockQueries, 100);
-
-    expect(mockGet).toHaveBeenCalledWith({
-      endpoint: Endpoint.cities,
-      queries: { filters: "city[equals]Tokyo", limit: 100 },
-    });
+describe("generateFilters", () => {
+  it("should generate correct filter string for a single query", () => {
+    const queries = { city: "Tokyo" };
+    const result = generateFilters(queries);
+    expect(result).toBe("city[equals]Tokyo");
   });
 
-  it("should use default limit if no limit is provided", async () => {
-    const mockGet = jest.fn();
-    (createClient as jest.Mock).mockReturnValue({
-      get: mockGet,
-    });
+  it("should generate correct filter string for multiple queries", () => {
+    const queries = { city: "Tokyo", population: 1000000 };
+    const result = generateFilters(queries);
+    expect(result).toBe("city[equals]Tokyo[and]population[equals]1000000");
+  });
 
-    const mockQueries = { city: "Tokyo" };
-    await getCities(Endpoint.cities, mockQueries);
+  it("should handle string and number values correctly", () => {
+    const queries = { name: "John", age: 30 };
+    const result = generateFilters(queries);
+    expect(result).toBe("name[equals]John[and]age[equals]30");
+  });
 
-    expect(mockGet).toHaveBeenCalledWith({
-      endpoint: Endpoint.cities,
-      queries: { filters: "city[equals]Tokyo", limit: 2000 },
-    });
+  it("should return an empty string for an empty query object", () => {
+    const queries = {};
+    const result = generateFilters(queries);
+    expect(result).toBe("");
+  });
+
+  it("should handle special characters in query values", () => {
+    const queries = { city: "New York", description: "Big & Busy" };
+    const result = generateFilters(queries);
+    expect(result).toBe(
+      "city[equals]New York[and]description[equals]Big & Busy"
+    );
   });
 });

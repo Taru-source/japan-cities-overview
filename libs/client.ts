@@ -26,19 +26,18 @@ export function getCity(endpoint: Endpoint, cityCode: number) {
   });
 }
 
+export function generateFilters(queries: { [key: string]: string | number }) {
+  return Object.entries(queries)
+    .map(([key, value]) => `${key}[equals]${value}`)
+    .join("[and]");
+}
+
 export function getCities(
   endpoint: Endpoint,
   queries?: { [key: string]: string | number },
   limit?: number
 ) {
-  // 「filters: 'key[equals]value'」の形でクエリを作成
-  let filters = "";
-  if (queries) {
-    const queryArray = Object.entries(queries).map(
-      ([key, value]) => `${key}[equals]${value}`
-    );
-    filters = `${queryArray.join("[and]")}`;
-  }
+  const filters = queries ? generateFilters(queries) : "";
 
   if (limit) {
     queries = { filters: filters, limit: limit };
